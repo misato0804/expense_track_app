@@ -1,0 +1,9 @@
+@use "variable";
+
+@media (#{variable.$mediaSize_SP}) {
+
+}
+
+@media (#{variable.$mediaSize_PC}){
+
+}

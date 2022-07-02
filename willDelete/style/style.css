@@ -1,0 +1,162 @@
+@charset "UTF-8";
+/*
+Medea Query
+▼共通デザイン（モバイル向け）
+▼中型画面向けデザイン（タブレットなど）
+▼大型画面向けデザイン（PCなど）
+*/
+/*
+Font
+*/
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=League+Gothic&family=Montserrat:wght@100&family=Rajdhani:wght@400;500;700&family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;1,200&family=Barlow:wght@300&family=League+Gothic&family=Montserrat:wght@100&family=Rajdhani:wght@400;500;700&family=Staatliches&display=swap");
+/*
+color
+*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 2rem;
+  max-width: 100%;
+  background: #CCE5E2;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-family: "Staatliches", cursive;
+}
+
+p {
+  font-family: "Barlow", sans-serif;
+}
+
+/*
+HEADER STYLES
+ */
+header {
+  margin: 2rem;
+  border-radius: 2.5rem;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  color: #fff;
+  font-size: 4rem;
+  background: -moz-linear-gradient(top, #01473E, #07945e);
+  background: -webkit-linear-gradient(top, #01473E, #07945e);
+  background: linear-gradient(to bottom, #01473E, #07945e);
+  box-shadow: 1rem 1rem 1.5rem -1rem #1f1e1e;
+}
+
+/*
+BODY HEADER STYLES
+ */
+.body_header {
+  text-align: center;
+  margin: 8rem 0;
+}
+.body_header img {
+  width: 30rem;
+  margin: 3rem;
+}
+.body_header h2 {
+  font-size: 7rem;
+  color: #01473E;
+}
+.body_header p {
+  font-size: 5rem;
+  color: #01473E;
+}
+
+/*
+BODY MAIN
+ */
+main {
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+main .card {
+  background-color: #fff;
+  padding: 5rem;
+  border-radius: 3rem;
+  text-align: center;
+  cursor: pointer;
+}
+main .card img {
+  width: 10rem;
+  margin: 2rem;
+}
+main .card h3 {
+  color: #01473E;
+  font-size: 2.8rem;
+}
+
+/*
+Slide ITEM (initial setting: HIDDEN)
+ */
+.slide_container {
+  top: 24rem;
+  left: 4rem;
+  background-color: pink;
+  width: 130%;
+  height: 80%;
+  border-radius: 30px 0 0 30px;
+  padding: 10rem;
+}
+.slide_container img {
+  width: 5rem;
+  position: absolute;
+}
+
+footer {
+  background: linear-gradient(to bottom, #07945e, #01473E);
+}
+footer ul {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+footer ul li {
+  display: inline-block;
+  width: 20%;
+  line-height: 15rem;
+  color: #fff;
+  font-size: 5rem;
+  text-align: center;
+  background-color: #CCE5E2;
+  border-radius: 50%;
+}
+footer ul li p {
+  vertical-align: middle;
+  color: black;
+}
+
+@keyframes SlideIN {
+  0% {
+    opacity: 0;
+    transform: translateX(3000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

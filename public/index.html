@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MONEY</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<header>
+    <h1>MONEY APP</h1>
+</header>
+<main>
+    <div class="main___head">
+        <img src="https://i0.wp.com/ai-catcher.com/wp-content/uploads/icon_83-1.png?fit=567%2C567&ssl=1" alt="">
+    </div>
+    <div class="main__option">
+        <section class="option search-section">
+            <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" alt="">
+            <h3>Search Account</h3>
+        </section>
+        <section class="option create-account-section">
+            <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead" alt="">
+            <h3>Create Account</h3>
+        </section>
+        <section class="option transaction-section">
+            <img src="https://cdn-icons.flaticon.com/png/512/2510/premium/2510695.png?token=exp=1656798544~hmac=33dd2a66d18fde54068e47d6656696b2" alt="">
+            <h3>Transaction</h3>
+        </section>
+        <section class="option" class="categories-section">
+            <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24" alt="">
+            <h3>Create New Category</h3>
+        </section>
+    </div>
+</main>
+<nav>
+    <div class="nav_btn search-section">
+        <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" alt="">
+    </div>
+    <div class="nav_btn create-account-section">
+        <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead" alt="">
+    </div>
+    <div class="nav_btn transaction-section">
+        <img src="https://cdn-icons.flaticon.com/png/512/2510/premium/2510695.png?token=exp=1656798544~hmac=33dd2a66d18fde54068e47d6656696b2" alt="">
+    </div>
+    <div class="nav_btn categories-section">
+        <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24" alt="">
+    </div>
+</nav>
+
+
+<div class="show_data card">
+    <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
+    <form action="/data" method="POST">
+        <input type="text" name="last_name" id="user_name" class="input" placeholder="use name">
+        <input type="submit" value="SEND" class="btn">
+    </form>
+</div>
+
+<div class="resister card ">
+    <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
+    <form action="/data" method="POST" id="new_account_info">
+        <input type="text" name="first_name" id="first_name" class="input" placeholder="FIRST NAME">
+        <input type="text" name="last_name" id="last_name" class="input" placeholder="LAST NAME">
+        <input type="submit" value="SEND" class="btn">
+    </form>
+</div>
+
+<div class="transaction card">
+    <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
+    <form class="transaction_detail">
+        <fieldset>
+            <input id="item-1" class="radio-inline__input" type="radio" name="accessible-radio" value="item-1" checked="checked"/>
+            <label class="radio-inline__label" for="item-1">
+                Wothdraw
+            </label>
+            <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio" value="item-2"/>
+            <label class="radio-inline__label" for="item-2">
+                Deposit
+            </label>
+            <input id="item-3" class="radio-inline__input" type="radio" name="accessible-radio" value="item-3"/>
+            <label class="radio-inline__label" for="item-3">
+                Transfer
+            </label>
+        </fieldset>
+    </form>
+</div>
+
+<div class="create_category card">
+    <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
+    <form action="/data" method="POST">
+        <input type="text" name="last_name" id="category_name" class="input" placeholder="category name">
+        <input type="submit" value="SEND" class="btn">
+    </form>
+</div>
+
+
+
+<script type="module" src="index.js"></script>
+<script type="module" src="js/event_controllers.js"></script>
+<script type="module" src="js/data_handlers.js"></script>
+</body>
+</html>
+
