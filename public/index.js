@@ -3,14 +3,13 @@ import {Category} from "./js/Category.js";
 
 const newAccountForm = document.getElementById("new_account_info");
 const newCategoryForm = document.getElementById("add_category");
-const searchedAccount = document.getElementById("get_account_info");
 
 ////////////////////////////////////////////////
 //Create New Account
 ////////////////////////////////////////////////
 async function createNewAccountData() {
-  const firstName = document.getElementById("first_name").value;
-  const lastName = document.getElementById("last_name").value;
+  let firstName = document.getElementById("first_name").value;
+  let lastName = document.getElementById("last_name").value;
   const newAccount = new Account(firstName, lastName);
   const post_data_base = JSON.stringify(newAccount)
   console.log(newAccount)
@@ -29,7 +28,9 @@ async function newAccountSubmit(event) {
   event.preventDefault();
   try {
     const data = await createNewAccountData();
-    console.log(data)
+    alert(`Thank you! Resisted ${data[0].userName} successfully`)
+    document.getElementById("first_name").value = '';
+    document.getElementById("last_name").value = '';
   } catch (err) {
     console.log(err);
   }

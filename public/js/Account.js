@@ -15,9 +15,9 @@ export class Account {
   }
 
   setUserName(_firstName, _lastName) {
-    this.firstName = _firstName;
-    this.lastName = _lastName;
-    this.userName = _firstName + " " + _lastName;
+    this.firstName = _firstName.charAt(0).toUpperCase() + _firstName.slice(1).toLowerCase();
+    this.lastName = _lastName.charAt(0).toUpperCase() + _lastName.slice(1).toLowerCase();
+    this.userName = this.firstName + " " + this.lastName
     return this.userName;
   }
 
@@ -26,7 +26,13 @@ export class Account {
   }
 
   withdraw(amount){
-    this.saving -= amount;
+    if(amount <= this.saving){
+      this.saving -= amount;
+    }
+  }
+
+  processSuccess(event, userName){
+
   }
 
   transactionValidator(amount, saving){
