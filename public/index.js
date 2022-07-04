@@ -2,7 +2,7 @@ import {Account} from "./js/Account.js";
 import {Category} from "./js/Category.js";
 
 const newAccountForm = document.getElementById("new_account_info");
-const newCategoryForm = document.getElementById("add_categories");
+const newCategoryForm = document.getElementById("add_category");
 const searchedAccount = document.getElementById("get_account_info");
 
 ////////////////////////////////////////////////
@@ -25,7 +25,6 @@ async function createNewAccountData() {
   const res = await fetch("http://localhost:3000/data", fetchOptions);
   return res.json();
 }
-
 async function newAccountSubmit(event) {
   event.preventDefault();
   try {
@@ -41,7 +40,7 @@ newAccountForm.addEventListener("submit", newAccountSubmit)
 //Create New Categories
 ////////////////////////////////////////////////
 async function createNewCategoryData() {
-  const categoryName = document.getElementById("categories").value;
+  const categoryName = document.getElementById("category_name").value;
   const newCategory = new Category(categoryName)
   const post_newCategory = JSON.stringify(newCategory);
   const fetchOption = {
@@ -66,22 +65,5 @@ async function newCategorySubmit(event) {
   }
 }
 
+newCategoryForm.addEventListener("submit", newCategorySubmit)
 
-
-////////////////////////////////////////////////
-//Create New Transaction
-////////////////////////////////////////////////
-//1 withdraw
-//From whose account? => choose account
-//2 deposit
-//To whose account? => choose account
-//3 Transfer
-// From  => To
-
-
-//4　input AMOUNT
-
-//Add History
-//*Amount
-//*article
-//date of transaction

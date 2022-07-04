@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import accountData, {AccountData} from "./src/AccountData.js";
+import {AccountData} from "./src/AccountData.js";
 import {CategoryData} from "./src/CategoryData.js"
 import cors from "cors";
 
@@ -19,19 +19,14 @@ app.use(cors());
 let accountDataBase = new AccountData();
 
 app.get('/data', (req, res) => {
-  res.status(200).json(accountDataBase.getData());
+  console.log(accountDataBase.data)
+  res.status(200).json(accountDataBase.data);
 })
 
 app.post('/data', (req, res) => {
   accountDataBase.addData(req.body)
   console.log(accountDataBase)
   res.status(200).json(accountDataBase.data)
-})
-
-app.get("/data/name",(req, res) => {
-  let name = req.params.name
-  console.log(name)
-  res.send.req.params
 })
 
 /**
@@ -51,5 +46,5 @@ app.post('/categories', (req, res) => {
 
 
 app.listen(SERVER_PORT, () => {
-  console.log("LOGGED IN")
+  console.log("LOG IN")
 })

@@ -165,4 +165,8 @@ fieldset {
   outline-width: 5px;
 }
 
+fieldset {
+  margin: 2rem;
+}
+
 /*# sourceMappingURL=style.css.map */
