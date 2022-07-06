@@ -20,9 +20,13 @@ body {
 header {
   margin: 3rem;
   text-align: center;
+  padding: 2rem;
+  background-color: green;
 
   h1 {
     line-height: 6rem;
+    font-size: 4rem;
+
   }
 }
 
@@ -156,6 +160,7 @@ fieldset {
 .radio-inline__input {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
+
 }
 
 .radio-inline__label {
@@ -164,10 +169,12 @@ fieldset {
   margin: 0 1rem;
   border-radius: 3px;
   transition: all .2s;
+  font-size: 1.5rem;
+
 }
 
 .radio-inline__input:checked + .radio-inline__label {
-  background: #B54A4A;
+  background: #005227;
   color: #fff;
   text-shadow: 0 0 1px rgba(0,0,0,.7);
 }
@@ -187,7 +194,6 @@ fieldset {
   margin: 5.5rem auto 0 auto ;
   width: 80%;
   height: 60%;
-  background-color: #00d0ff;
   overflow: scroll;
 }
 
@@ -207,4 +213,27 @@ fieldset {
   margin: 5rem auto 0 auto;
 }
 
+.withdraw_screen_data {
+  transition: all 1s ease-in;
+}
 
+.date_details {
+  margin-top: 3rem;
+  text-align: center;
+  h1 {
+    font-size: 2.2rem;
+    margin: 1rem;
+  }
+}
+
+#show_all_data {
+  width: 60%;
+  font-size: 2.2rem;
+}
+
+.table {
+  text-align: center;
+  margin: 3rem;
+  font-size: 1.8rem;
+  color: #fff;
+}

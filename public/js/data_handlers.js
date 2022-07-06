@@ -1,31 +1,68 @@
 ////////////////////////////////////////////////
 //Search Account Data
 ////////////////////////////////////////////////
+const pullDown = document.getElementById('show_all_data');
+const showData_btn = document.getElementsByClassName("search-section")[0];
+const get_info_btn = document.getElementById("get_info");
+const data_insert = document.getElementById("data_insert");
 
-const search_form = document.getElementById("search_data");
-const parents_container = document.querySelector(".show_data");
-const data_only_container = document.createElement("div");
-data_only_container.classList.add("data_container");
-parents_container.appendChild(data_only_container);
 
-async function showDate(event) {
+async function selectDate(event) {
   event.preventDefault();
-  const userName = document.getElementById('user_name').value;
   const accountData = await getAllData();
   accountData.forEach(account => {
-    console.log(account)
-    if (account.userName.indexOf(userName) !== -1) {
-      if (!document.querySelector(`.search_${account.id}`)) {
-        const dataContainer = document.createElement("div");
-        dataContainer.setAttribute("class", "account_detail");
-        dataContainer.innerHTML = `
-        <h5 class= "search_${account.id}" > ${account.id} : ${account.userName} </h5>
-      `;
-        data_only_container.appendChild(dataContainer);
-      }
-    }
+    const option = document.createElement("option");
+    option.text = account.userName;
+    pullDown.appendChild(option)
   })
 }
+
+async function show_info(event) {
+  event.preventDefault();
+  const container = document.createElement("table");
+  container.setAttribute("class", "table")
+  const userName = pullDown.value;
+  ;
+  const allData = await getAllData();
+  allData.forEach(account => {
+    if (account.userName === userName) {
+      container.innerHTML = `
+      <tr>
+        <td>User name</td>
+        <td>: ${account.userName}</td>
+      </tr>
+      <tr>
+        <td>Saving</td>
+        <td>: CAD ${account.saving}</td>
+      </tr>
+      <tr>
+        <td>History:</td>
+        ${showHistory(account.history)}
+      </tr>
+      `
+    }
+    data_insert.appendChild(container);
+  })
+}
+
+function showHistory(history) {
+  let container = ``;
+  history.forEach( data => {
+    let transaction = data.transaction;
+    let date = data.dateOfTransaction;
+    let amount = data.transactionAmount;
+    container += `
+      <td>Type: ${transaction}</td><br>
+      <td>Date: ${date}</td><br>
+      <td>Amount: $ ${amount}</td><br>
+    `;
+  })
+  return container;
+}
+
+
+showData_btn.addEventListener("click", selectDate);
+get_info_btn.addEventListener("click", show_info);
 
 ////////////////////////////////////////////////////
 //Transaction "Deposit"
@@ -61,6 +98,8 @@ async function transactionDepo(event) {
   try {
     const data = deposit();
     console.log(data)
+    document.getElementById("deposit_user_id").value = "";
+    document.getElementById("deposit_amount").value = "";
     return data;
   } catch (err) {
     console.log(err)
@@ -103,6 +142,8 @@ async function transactionWithdraw(event) {
   try {
     const data = withdraw();
     console.log(data)
+    document.getElementById("withdraw_user_id").value = "";
+    document.getElementById("withdraw_amount").value = "";
     return data;
   } catch (err) {
     console.log(err)
@@ -147,12 +188,16 @@ async function transactionTransfer(event) {
   event.preventDefault();
   try {
     const data = transfer();
-    console.log(data)
+    console.log(data);
+    document.getElementById("from_user_id").value = "";
+    document.getElementById("to_user_id").value = "";
+    document.getElementById("transfer_amount").value = "";
     return data;
   } catch (err) {
     console.log(err)
   }
 }
+
 transfer_form.addEventListener("submit", transactionTransfer)
 
 async function getAllData() {
@@ -161,5 +206,5 @@ async function getAllData() {
   return allData;
 }
 
-search_form.addEventListener("keyup", showDate);
+
 

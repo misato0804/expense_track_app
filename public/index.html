@@ -56,10 +56,14 @@
 
 <div class="show_data card">
     <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
-    <form id="search_data">
-        <input type="text" id="user_name" class="input" placeholder="user name">
-        <input type="submit" value="All Data" class="btn">
-    </form>
+    <div class="date_details">
+        <h1>Choose account below</h1>
+        <select name="show_data" id="show_all_data">
+            <option hidden>User Name</option>
+        </select>
+        <button class="btn" id="get_info">Get Info</button>
+    </div>
+    <div id="data_insert"></div>
 </div>
 
 <div class="resister card ">
