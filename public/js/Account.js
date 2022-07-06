@@ -1,4 +1,3 @@
-
 export class Account {
   firstName;
   lastName;
@@ -18,5 +17,4 @@ export class Account {
     this.userName = this.firstName + " " + this.lastName
     return this.userName;
   }
-
 }

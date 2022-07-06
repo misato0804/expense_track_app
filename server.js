@@ -30,11 +30,26 @@ app.post('/data', (req, res) => {
 })
 
 app.put("/data", (req, res) => {
-  const obj = accountDataBase.findObj(accountDataBase.data , req.body.id);
-  if(req.body.transaction === "deposit") {
-    obj.saving += Number(req.body.amount);
-    obj.history.push(new History(new Date(), req.body.transaction, req.body.amount));
+  const obj = accountDataBase.findObj(accountDataBase.data, req.body.id);
+  const amount = Number(req.body.amount);
+  if (req.body.transaction === "deposit") {
+    obj.saving += amount;
+    obj.history.push(new History(new Date(), req.body.transaction, amount));
     console.log(obj)
+    res.status(200).json(accountDataBase.data)
+  } else if (req.body.transaction === "Withdraw") {
+    accountDataBase.canWithdraw(obj, amount)
+    obj.saving -= amount;
+    obj.history.push(new History(new Date(), req.body.transaction, -amount))
+    res.status(200).json(accountDataBase.data)
+  } else if (req.body.transaction === "Transfer") {
+    const from_obj = accountDataBase.findObj(accountDataBase.data, req.body.from_user);
+    const to_obj = accountDataBase.findObj(accountDataBase.data, req.body.to_user);
+    accountDataBase.canWithdraw(from_obj, amount)
+    from_obj.saving -= amount;
+    to_obj.saving += amount;
+    from_obj.history.push(new History(new Date(), req.body.transaction, -amount));
+    to_obj.history.push(new History(new Date(), req.body.transaction, amount))
     res.status(200).json(accountDataBase.data)
   }
 })

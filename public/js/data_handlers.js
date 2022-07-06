@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////
 //Search Account Data
 ////////////////////////////////////////////////
-import {History} from "./Histry.js";
-import {Account} from "./Account.js";
 
 const search_form = document.getElementById("search_data");
 const parents_container = document.querySelector(".show_data");
@@ -32,7 +30,7 @@ async function showDate(event) {
 ////////////////////////////////////////////////////
 //Transaction "Deposit"
 ///////////////////////////////////////////////////
-const deposit_form= document.getElementById("deposit_search_data");
+const deposit_form = document.getElementById("deposit_search_data");
 
 async function deposit() {
   const deposit_id = document.getElementById("deposit_user_id").value;
@@ -58,7 +56,7 @@ async function deposit() {
   return res.json();
 }
 
-async function transaction(event) {
+async function transactionDepo(event) {
   event.preventDefault();
   try {
     const data = deposit();
@@ -69,8 +67,93 @@ async function transaction(event) {
   }
 }
 
-deposit_form.addEventListener("submit", transaction)
+deposit_form.addEventListener("submit", transactionDepo)
 
+////////////////////////////////////////////////////
+//Transaction "Withdraw"
+///////////////////////////////////////////////////
+const withdraw_form = document.getElementById("withdraw_search_data");
+
+async function withdraw() {
+  const withdraw_id = document.getElementById("withdraw_user_id").value;
+  const withdraw_amount = document.getElementById("withdraw_amount").value;
+
+  const putData = {
+    transaction: "Withdraw",
+    id: withdraw_id,
+    amount: withdraw_amount
+  }
+
+  const putJsonData = JSON.stringify(putData);
+
+  const fetchOption = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: putJsonData
+  };
+  const res = await fetch(`http://localhost:3000/data`, fetchOption);
+  return res.json();
+}
+
+async function transactionWithdraw(event) {
+  event.preventDefault();
+  try {
+    const data = withdraw();
+    console.log(data)
+    return data;
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+withdraw_form.addEventListener("submit", transactionWithdraw)
+
+////////////////////////////////////////////////////
+//Transaction "Transfer"
+///////////////////////////////////////////////////
+const transfer_form = document.getElementById("transfer_search_data");
+
+async function transfer() {
+  const from_user_id = document.getElementById("from_user_id").value;
+  const to_user_id = document.getElementById("to_user_id").value;
+  const transfer_amount = document.getElementById("transfer_amount").value;
+
+  const putData = {
+    transaction: "Transfer",
+    from_user: from_user_id,
+    to_user: to_user_id,
+    amount: transfer_amount
+  }
+
+  const putJsonData = JSON.stringify(putData);
+
+  const fetchOption = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: putJsonData
+  };
+  const res = await fetch(`http://localhost:3000/data`, fetchOption);
+  return res.json();
+}
+
+
+async function transactionTransfer(event) {
+  event.preventDefault();
+  try {
+    const data = transfer();
+    console.log(data)
+    return data;
+  } catch (err) {
+    console.log(err)
+  }
+}
+transfer_form.addEventListener("submit", transactionTransfer)
 
 async function getAllData() {
   let res = await fetch(`http://localhost:3000/data`)
