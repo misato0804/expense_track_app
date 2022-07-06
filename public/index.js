@@ -4,6 +4,7 @@ import {Category} from "./js/Category.js";
 const newAccountForm = document.getElementById("new_account_info");
 const newCategoryForm = document.getElementById("add_category");
 
+
 ////////////////////////////////////////////////
 //Create New Account
 ////////////////////////////////////////////////
@@ -28,7 +29,8 @@ async function newAccountSubmit(event) {
   event.preventDefault();
   try {
     const data = await createNewAccountData();
-    alert(`Thank you! Resisted ${data[0].userName} successfully`)
+    console.log(data[data.length - 1]);
+    alert(`Thank you! Resisted ${data[data.length - 1].userName} successfully`)
     document.getElementById("first_name").value = '';
     document.getElementById("last_name").value = '';
   } catch (err) {

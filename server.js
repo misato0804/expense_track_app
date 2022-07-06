@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {AccountData} from "./src/AccountData.js";
-import {CategoryData} from "./src/CategoryData.js"
+import {CategoryData} from "./src/CategoryData.js";
+import {History} from "./public/js/Histry.js";
 import cors from "cors";
 
 const app = express();
@@ -19,7 +20,6 @@ app.use(cors());
 let accountDataBase = new AccountData();
 
 app.get('/data', (req, res) => {
-  console.log(accountDataBase.data)
   res.status(200).json(accountDataBase.data);
 })
 
@@ -28,6 +28,17 @@ app.post('/data', (req, res) => {
   console.log(accountDataBase)
   res.status(200).json(accountDataBase.data)
 })
+
+app.put("/data", (req, res) => {
+  const obj = accountDataBase.findObj(accountDataBase.data , req.body.id);
+  if(req.body.transaction === "deposit") {
+    obj.saving += Number(req.body.amount);
+    obj.history.push(new History(new Date(), req.body.transaction, req.body.amount));
+    console.log(obj)
+    res.status(200).json(accountDataBase.data)
+  }
+})
+
 
 /**
  *Category Server

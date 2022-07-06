@@ -16,5 +16,4 @@ export class Data {
     this.data.push(returnData);
     return returnData;
   }
-
 }
