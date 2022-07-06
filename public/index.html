@@ -20,15 +20,18 @@
             <h3>Search Account</h3>
         </section>
         <section class="option create-account-section">
-            <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead" alt="">
+            <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead"
+                 alt="">
             <h3>Create Account</h3>
         </section>
         <section class="option transaction-section">
-            <img src="https://cdn-icons.flaticon.com/png/512/2510/premium/2510695.png?token=exp=1656798544~hmac=33dd2a66d18fde54068e47d6656696b2" alt="">
+            <img src="https://cdn-icons.flaticon.com/png/512/2842/premium/2842968.png?token=exp=1656880423~hmac=8b86a6abc363541cc3e1cf02585b14ad"
+                 alt="">
             <h3>Transaction</h3>
         </section>
-        <section class="option" class="categories-section">
-            <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24" alt="">
+        <section class="option categories-section">
+            <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24"
+                 alt="">
             <h3>Create New Category</h3>
         </section>
     </div>
@@ -38,63 +41,92 @@
         <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" alt="">
     </div>
     <div class="nav_btn create-account-section">
-        <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead" alt="">
+        <img src="https://cdn-icons.flaticon.com/png/512/5881/premium/5881133.png?token=exp=1656798489~hmac=f0ff6da432fd0d9757607dc8aacfeead"
+             alt="">
     </div>
     <div class="nav_btn transaction-section">
-        <img src="https://cdn-icons.flaticon.com/png/512/2510/premium/2510695.png?token=exp=1656798544~hmac=33dd2a66d18fde54068e47d6656696b2" alt="">
+        <img src="https://cdn-icons.flaticon.com/png/512/2842/premium/2842968.png?token=exp=1656880423~hmac=8b86a6abc363541cc3e1cf02585b14ad"
+             alt="">
     </div>
     <div class="nav_btn categories-section">
-        <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24" alt="">
+        <img src="https://cdn-icons.flaticon.com/png/512/5414/premium/5414572.png?token=exp=1656798579~hmac=4606574581cfb36006467dfe7fc96a24"
+             alt="">
     </div>
 </nav>
 
-
 <div class="show_data card">
     <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
-    <form action="/data" method="POST">
-        <input type="text" name="last_name" id="user_name" class="input" placeholder="use name">
-        <input type="submit" value="SEND" class="btn">
-    </form>
+    <div class="date_details">
+        <h1>Choose account below</h1>
+        <select name="show_data" id="show_all_data">
+            <option hidden>User Name</option>
+        </select>
+        <button class="btn" id="get_info">Get Info</button>
+    </div>
+    <div id="data_insert"></div>
 </div>
 
 <div class="resister card ">
     <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
-    <form action="/data" method="POST" id="new_account_info">
-        <input type="text" name="first_name" id="first_name" class="input" placeholder="FIRST NAME">
-        <input type="text" name="last_name" id="last_name" class="input" placeholder="LAST NAME">
-        <input type="submit" value="SEND" class="btn">
+    <form id="new_account_info">
+        <input type="text" id="first_name" class="input" placeholder="FIRST NAME" required>
+        <input type="text" id="last_name" class="input" placeholder="LAST NAME" required>
+        <input type="submit" value="Resister" class="btn">
     </form>
 </div>
 
 <div class="transaction card">
     <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
-    <form class="transaction_detail">
+    <form name="transaction_detail">
         <fieldset>
-            <input id="item-1" class="radio-inline__input" type="radio" name="accessible-radio" value="item-1" checked="checked"/>
-            <label class="radio-inline__label" for="item-1">
-                Wothdraw
+            <input id="Withdraw" class="radio-inline__input" type="radio" name="transaction_options" value="Withdraw"/>
+            <label class="radio-inline__label" for="Withdraw">
+                Withdraw
             </label>
-            <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio" value="item-2"/>
-            <label class="radio-inline__label" for="item-2">
+            <input id="Deposit" class="radio-inline__input" type="radio" name="transaction_options" value="Deposit"/>
+            <label class="radio-inline__label" for="Deposit">
                 Deposit
             </label>
-            <input id="item-3" class="radio-inline__input" type="radio" name="accessible-radio" value="item-3"/>
-            <label class="radio-inline__label" for="item-3">
+            <input id="Transfer" class="radio-inline__input" type="radio" name="transaction_options" value="Transfer"/>
+            <label class="radio-inline__label" for="Transfer">
                 Transfer
             </label>
         </fieldset>
     </form>
+
+    <div class="withdraw_screen" style="display: none">
+        <form id="withdraw_search_data">
+            <input type="number" id="withdraw_user_id" class="input" placeholder="user id" required>
+            <input type="number" id="withdraw_amount" class="input" placeholder="CAD" required>
+            <input type="submit" value="Withdraw" class="btn">
+        </form>
+    </div>
+    <div class="deposit_screen" style="display: none">
+        <form id="deposit_search_data">
+            <input type="text" id="deposit_user_id" class="input" placeholder="user id" required>
+            <input type="number" id="deposit_amount" class="input" placeholder="CAD" required>
+            <input type="submit" value="Deposit" class="btn">
+        </form>
+    </div>
+    <div class="transfer_screen" style="display: none">
+        <form id="transfer_search_data">
+            <input type="text" id="from_user_id" class="input" placeholder="From account" required>
+            <input type="text" id="to_user_id" class="input" placeholder="To account" required>
+            <input type="number" id="transfer_amount" class="input" placeholder="CAD" required>
+            <input type="submit" value="Transfer" class="btn">
+        </form>
+    </div>
+
+
 </div>
 
 <div class="create_category card">
     <img src="https://cdn-icons-png.flaticon.com/512/748/748122.png" alt="" class="close_btn">
-    <form action="/data" method="POST">
-        <input type="text" name="last_name" id="category_name" class="input" placeholder="category name">
-        <input type="submit" value="SEND" class="btn">
+    <form id="add_category">
+        <input type="text" id="category_name" class="input" placeholder="category name" required>
+        <input type="submit" value="Resister" class="btn">
     </form>
 </div>
-
-
 
 <script type="module" src="index.js"></script>
 <script type="module" src="js/event_controllers.js"></script>

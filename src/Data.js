@@ -1,8 +1,10 @@
 //Abstract class
 export class Data {
+
   data;
+
   constructor() {
-    this.data = new Array;
+    this.data = [];
   }
 
   getData(){
@@ -14,9 +16,4 @@ export class Data {
     this.data.push(returnData);
     return returnData;
   }
-
-  searchData(){
-
-  }
-
 }

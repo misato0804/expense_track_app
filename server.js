@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import accountData, {AccountData} from "./src/AccountData.js";
-import {CategoryData} from "./src/CategoryData.js"
+import {AccountData} from "./src/AccountData.js";
+import {CategoryData} from "./src/CategoryData.js";
+import {History} from "./public/js/Histry.js";
 import cors from "cors";
 
 const app = express();
@@ -19,7 +20,7 @@ app.use(cors());
 let accountDataBase = new AccountData();
 
 app.get('/data', (req, res) => {
-  res.status(200).json(accountDataBase.getData());
+  res.status(200).json(accountDataBase.data);
 })
 
 app.post('/data', (req, res) => {
@@ -28,11 +29,31 @@ app.post('/data', (req, res) => {
   res.status(200).json(accountDataBase.data)
 })
 
-app.get("/data/name",(req, res) => {
-  let name = req.params.name
-  console.log(name)
-  res.send.req.params
+app.put("/data", (req, res) => {
+  const obj = accountDataBase.findObj(accountDataBase.data, req.body.id);
+  const amount = Number(req.body.amount);
+  if (req.body.transaction === "deposit") {
+    obj.saving += amount;
+    obj.history.push(new History(new Date(), req.body.transaction, amount));
+    console.log(obj)
+    res.status(200).json(accountDataBase.data)
+  } else if (req.body.transaction === "Withdraw") {
+    accountDataBase.canWithdraw(obj, amount)
+    obj.saving -= amount;
+    obj.history.push(new History(new Date(), req.body.transaction, -amount))
+    res.status(200).json(accountDataBase.data)
+  } else if (req.body.transaction === "Transfer") {
+    const from_obj = accountDataBase.findObj(accountDataBase.data, req.body.from_user);
+    const to_obj = accountDataBase.findObj(accountDataBase.data, req.body.to_user);
+    accountDataBase.canWithdraw(from_obj, amount)
+    from_obj.saving -= amount;
+    to_obj.saving += amount;
+    from_obj.history.push(new History(new Date(), req.body.transaction, -amount));
+    to_obj.history.push(new History(new Date(), req.body.transaction, amount))
+    res.status(200).json(accountDataBase.data)
+  }
 })
+
 
 /**
  *Category Server
@@ -51,5 +72,5 @@ app.post('/categories', (req, res) => {
 
 
 app.listen(SERVER_PORT, () => {
-  console.log("LOGGED IN")
+  console.log("LOG IN")
 })

@@ -5,6 +5,7 @@ export class CategoryData extends Data{
   constructor() {
     super();
   }
+
 }
 
 export default { CategoryData }

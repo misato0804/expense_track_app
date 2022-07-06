@@ -1,36 +1,20 @@
-import { History } from "./Histry.js";
-
 export class Account {
   firstName;
   lastName;
   userName;
   id;　//endpoint
   saving;
-  history = [ new History ];
+  history = [];
 
   constructor(firstName, lastName) {
     this.userName = this.setUserName(firstName, lastName)
-    this.history = history;
     this.saving = 0;
   }
 
   setUserName(_firstName, _lastName) {
-    this.firstName = _firstName;
-    this.lastName = _lastName;
-    this.userName = _firstName + " " + _lastName;
+    this.firstName = _firstName.charAt(0).toUpperCase() + _firstName.slice(1).toLowerCase();
+    this.lastName = _lastName.charAt(0).toUpperCase() + _lastName.slice(1).toLowerCase();
+    this.userName = this.firstName + " " + this.lastName
     return this.userName;
   }
-
-  deposit(amount){
-    this.saving += amount;
-  }
-
-  withdraw(amount){
-    this.saving -= amount;
-  }
-
-  transactionValidator(amount, saving){
-    console.log("SUCCESS")
-  }
-
 }

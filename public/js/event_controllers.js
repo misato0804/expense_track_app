@@ -47,3 +47,35 @@ open_tab();
 close_tab();
 
 
+function screenChanger() {
+  const transaction_options = document.getElementsByName("transaction_options");
+  const withdraw_window = document.getElementsByClassName("withdraw_screen")[0];
+  const deposit_window = document.getElementsByClassName("deposit_screen")[0];
+  const transfer_window = document.getElementsByClassName("transfer_screen")[0];
+  if(transaction_options[0].checked) {
+    withdraw_window.style.display = "";
+    deposit_window.style.display = "none";
+    transfer_window.style.display = "none";
+  } else if(transaction_options[1].checked) {
+    withdraw_window.style.display = "none";
+    deposit_window.style.display = "";
+    transfer_window.style.display = "none";
+  } else if(transaction_options[2].checked) {
+    withdraw_window.style.display = "none";
+    deposit_window.style.display = "none";
+    transfer_window.style.display = "";
+  } else {
+    withdraw_window.style.display = "none";
+    deposit_window.style.display = "none";
+    transfer_window.style.display = "none";
+  }
+}
+
+document.getElementById("Withdraw").onclick = screenChanger;
+document.getElementById("Deposit").onclick = screenChanger;
+document.getElementById("Transfer").onclick = screenChanger;
+
+
+
+
+
