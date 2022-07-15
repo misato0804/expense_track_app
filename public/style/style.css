@@ -56,7 +56,7 @@ main .main__option .option img {
   width: 5rem;
 }
 main .main__option .option h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 nav {
@@ -205,7 +205,7 @@ fieldset {
   text-align: center;
 }
 .date_details h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin: 1rem;
 }
 
@@ -219,6 +219,21 @@ fieldset {
   margin: 3rem;
   font-size: 1.8rem;
   color: #fff;
+}
+
+i {
+  font-size: 3rem;
+}
+
+.account-data {
+  margin: 0 3.5rem;
+  padding: 1rem;
+}
+.account-data h2 {
+  font-size: 2.5rem;
+}
+.account-data p {
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

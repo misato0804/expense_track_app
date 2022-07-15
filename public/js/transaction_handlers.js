@@ -1,69 +1,3 @@
-////////////////////////////////////////////////
-//Search Account Data
-////////////////////////////////////////////////
-const pullDown = document.getElementById('show_all_data');
-const showData_btn = document.getElementsByClassName("search-section")[0];
-const get_info_btn = document.getElementById("get_info");
-const data_insert = document.getElementById("data_insert");
-
-
-async function selectDate(event) {
-  event.preventDefault();
-  const accountData = await getAllData();
-  accountData.forEach(account => {
-    const option = document.createElement("option");
-    option.text = account.userName;
-    pullDown.appendChild(option)
-  })
-}
-
-async function show_info(event) {
-  event.preventDefault();
-  const container = document.createElement("table");
-  container.setAttribute("class", "table")
-  const userName = pullDown.value;
-  ;
-  const allData = await getAllData();
-  allData.forEach(account => {
-    if (account.userName === userName) {
-      container.innerHTML = `
-      <tr>
-        <td>User name</td>
-        <td>: ${account.userName}</td>
-      </tr>
-      <tr>
-        <td>Saving</td>
-        <td>: CAD ${account.saving}</td>
-      </tr>
-      <tr>
-        <td>History:</td>
-        ${showHistory(account.history)}
-      </tr>
-      `
-    }
-    data_insert.appendChild(container);
-  })
-}
-
-function showHistory(history) {
-  let container = ``;
-  history.forEach( data => {
-    let transaction = data.transaction;
-    let date = data.dateOfTransaction;
-    let amount = data.transactionAmount;
-    container += `
-      <td>Type: ${transaction}</td><br>
-      <td>Date: ${date}</td><br>
-      <td>Amount: $ ${amount}</td><br>
-    `;
-  })
-  return container;
-}
-
-
-showData_btn.addEventListener("click", selectDate);
-get_info_btn.addEventListener("click", show_info);
-
 ////////////////////////////////////////////////////
 //Transaction "Deposit"
 ///////////////////////////////////////////////////
@@ -200,11 +134,6 @@ async function transactionTransfer(event) {
 
 transfer_form.addEventListener("submit", transactionTransfer)
 
-async function getAllData() {
-  let res = await fetch(`http://localhost:3000/data`)
-  let allData = await res.json();
-  return allData;
-}
 
 
 
