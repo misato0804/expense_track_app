@@ -6,8 +6,8 @@ export class History {
   transactionAmount;
   dateOfTransaction;
 
-  constructor(date, transaction, amount, ) {
-    this.dateOfTransaction = date
+  constructor(date, transaction, amount) {
+    this.dateOfTransaction = date.toUTCString();
     this.transaction = transaction;
     this.transactionAmount = amount;
   }

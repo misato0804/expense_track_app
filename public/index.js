@@ -13,7 +13,6 @@ async function createNewAccountData() {
   let lastName = document.getElementById("last_name").value;
   const newAccount = new Account(firstName, lastName);
   const post_data_base = JSON.stringify(newAccount)
-  console.log(newAccount)
   const fetchOptions = {
     method: "POST",
     headers: {

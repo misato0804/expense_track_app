@@ -23,6 +23,11 @@ app.get('/data', (req, res) => {
   res.status(200).json(accountDataBase.data);
 })
 
+app.get('/data/:id', (req, res) => {
+  const id = accountDataBase.data.findIndex((account) => account.id === req.params.id);
+  res.status(200).json(accountDataBase.data[id]);
+})
+
 app.post('/data', (req, res) => {
   accountDataBase.addData(req.body)
   console.log(accountDataBase)
